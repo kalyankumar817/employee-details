@@ -12,7 +12,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'https://employee-details-u2h6.vercel.app/users/login',
+        'http://localhost:3000/users/login',
         { email, password },
         { withCredentials: 'include' }
       );

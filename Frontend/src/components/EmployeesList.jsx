@@ -11,7 +11,7 @@ const EmployeesList = () => {
     useEffect(() => {
         const fetchEmployees = async () => {
             try {
-                const response = await axios.get('https://employee-details-u2h6.vercel.app/users/employees/getall', { withCredentials: true });
+                const response = await axios.get('http://localhost:3000/users/employees/getall', { withCredentials: true });
                 setEmployees(response.data);
             } catch (err) {
                 console.error('Error fetching employees:', err.response?.data?.message || err.message);
@@ -23,7 +23,7 @@ const EmployeesList = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this employee?')) {
             try {
-                await axios.delete(`https://employee-details-u2h6.vercel.app/users/employees/delete/${id}`, { withCredentials: true });
+                await axios.delete(`http://localhost:3000/users/employees/delete/${id}`, { withCredentials: true });
                 setEmployees((prevEmployees) => prevEmployees.filter((employee) => employee._id !== id));
                 alert('Employee deleted successfully!');
             } catch (err) {

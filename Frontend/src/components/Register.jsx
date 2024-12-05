@@ -13,7 +13,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'https://employee-details-u2h6.vercel.app/users/register',
+        'http://localhost:3000/users/register',
         { username, email, password }
       );
       if (response.status === 200) {
