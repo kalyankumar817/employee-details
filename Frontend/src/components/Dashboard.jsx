@@ -10,7 +10,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDashboard = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/users/dashboard', { withCredentials: true });
+        const response = await axios.get('https://employee-details-u2h6.vercel.app/users/dashboard', { withCredentials: true });
         if (response.data.valid) {
           setMessage(response.data.message);
         } else {
@@ -28,7 +28,7 @@ const Dashboard = () => {
   // Logout Function
   const handleLogout = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/users/logout', {}, { withCredentials: true });
+      const response = await axios.post('https://employee-details-u2h6.vercel.app/users/logout', {}, { withCredentials: true });
       console.log("Logout successful:", response.data);
       navigate('/'); // Redirect to login page after logout
     } catch (err) {

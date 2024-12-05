@@ -21,7 +21,7 @@ const UpdateEmployee = () => {
     const fetchEmployee = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/users/employees/get/${id}`,
+          `https://employee-details-u2h6.vercel.app/users/employees/get/${id}`,
           { withCredentials: true }
         );
         const data = response.data;
@@ -58,7 +58,7 @@ const UpdateEmployee = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:3000/users/employees/update/${id}`,
+        `https://employee-details-u2h6.vercel.app/users/employees/update/${id}`,
         formData,
         { withCredentials: true }
       );

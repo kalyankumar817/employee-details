@@ -34,7 +34,7 @@ const CreateEmployee = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://localhost:3000/users/employees/post',
+        'https://employee-details-u2h6.vercel.app/users/employees/post',
         formData,
         {
           withCredentials: true,
