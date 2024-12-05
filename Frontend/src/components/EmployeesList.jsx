@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import '../styles/EmployeesList.css';
 
-
 const EmployeesList = () => {
     const [employees, setEmployees] = useState([]);
+    const [searchQuery, setSearchQuery] = useState(''); // State to manage search query
 
     useEffect(() => {
         const fetchEmployees = async () => {
@@ -33,6 +33,17 @@ const EmployeesList = () => {
         }
     };
 
+    // Handle change in search input
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    // Filter employees based on search query
+    const filteredEmployees = employees.filter((employee) =>
+        employee.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        employee.designation.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <>
             <header>
@@ -41,6 +52,14 @@ const EmployeesList = () => {
             <main>
                 <div>
                     <h2>Employees List</h2>
+                    {/* Search input */}
+                    <label>Search: </label>
+                    <input
+                        type="text"
+                        placeholder="Search by name or designation"
+                        value={searchQuery}
+                        onChange={handleSearchChange}
+                    />
                     <table>
                         <thead>
                             <tr>
@@ -55,7 +74,7 @@ const EmployeesList = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {employees.map((employee) => (
+                            {filteredEmployees.map((employee) => (
                                 <tr key={employee._id}>
                                     <td>
                                         <img src={employee.imageurl} alt={employee.name} style={{ width: '50px' }} />
