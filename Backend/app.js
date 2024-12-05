@@ -10,7 +10,10 @@ const cookieParser = require('cookie-parser')
 const app=express();
 app.use(express.json())
 app.use(cors({
-    origin: 'http://localhost:5173', // Allow Vite frontend origin
+    origin: [
+        'http://localhost:5173', // Allow Vite frontend for local development
+        'https://idyllic-brigadeiros-6318da.netlify.app' // Allow Netlify deployed frontend
+    ],
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 }))
 app.use(cookieParser())
